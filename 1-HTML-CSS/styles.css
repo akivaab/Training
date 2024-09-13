@@ -5,7 +5,10 @@ body {
 /* Header */
 header {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     background-color: green;
+    color: white;
     text-align: center;
 }
 
@@ -22,6 +25,12 @@ nav {
 
 .link {
     padding: 0 5%;
+}
+.link:link {
+    color: white;
+}
+.link:visited {
+    color: white;
 }
 
 h1 {
@@ -131,3 +140,20 @@ form {
     margin: 0 auto;
 }
 /* Contact */
+
+/* Footer */
+footer {
+    display: flex;
+    background-color: green;
+    padding: 1%;
+}
+
+.copyright {
+    width: 90%;
+    margin: 0;
+}
+
+.back-to-top {
+    font-size: 1.5em;
+}
+/* Footer */
