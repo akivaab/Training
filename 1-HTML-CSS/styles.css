@@ -10,6 +10,7 @@ header {
     background-color: green;
     color: white;
     text-align: center;
+    font-family: Georgia, serif;
 }
 
 .title {
@@ -44,11 +45,13 @@ section {
     border: solid green 3px;
     padding: 1% 4.5% 4.5%;
     margin: 0.5%;
+    font-family: Verdana, Tahoma, sans-serif;
 }
 
 h2 {
     font-size: 2em;
     text-align: center;
+    font-family: Georgia, serif;
 }
 
 /* About */
@@ -146,6 +149,7 @@ footer {
     display: flex;
     background-color: green;
     padding: 1%;
+    font-family: Georgia, serif;
 }
 
 .copyright {
