@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+}
+
+header, footer {
+    background-color: aqua;
+    text-align: center;
+    padding: 1%;
+}
+
+#radio-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo-task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
