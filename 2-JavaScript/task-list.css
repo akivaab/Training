@@ -43,11 +43,11 @@ main {
 
 .radio-button-on, .radio-button-off {
     border: solid blue 1px;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 1% 2%;
-    margin: 1.5% 0.5%;
+    margin: 1% 0.5%;
     font-size: 1em;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     cursor: pointer;
 }
 .radio-button-on {
@@ -61,28 +61,39 @@ main {
 #task-list-container {
     width: 70%;
     margin: 0 auto;
-    border: solid blueviolet 1px;
+    padding: 0.25%;
+    background-color: lightsteelblue;
+    border: solid black 4px;
+    border-radius: 10px;
     flex-grow: 1;
     overflow-y: auto;
     min-height: 60vh;
-    max-height: 60vh; /* Adjust this value as needed to control height */
+    max-height: 60vh;
 }
 
 #todo-task-list, #completed-task-list {
     padding: 0;
     margin: 0;
-    border: solid lawngreen 1px;
     list-style: none;
+}
+#completed-task-list {
+    display: none;
 }
 
 .todo-task, .completed-task {
     display: flex;
     align-items: center;
-    border: solid black 1px;
+    border-radius: 8px;
+    margin: 0.2%;
 }
-
-#completed-task-list {
-    display: none;
+.todo-task {
+    background-color: lightblue;
+    border: solid darkblue 3px;
+}
+.completed-task {
+    background-color: darkblue;
+    color: white;
+    border: SOLID lightblue 3px;
 }
 
 .task-drag {
@@ -90,6 +101,7 @@ main {
 }
 .task-desc {
     width: 70%;
+    word-wrap: break-word;
 }
 .task-completed-btn {
     width: 12%;
@@ -101,9 +113,22 @@ main {
 
 #add-task-section {
     display: flex;
-    align-items: center;
     justify-content: center;
     flex-grow: 1;
     width: 65%;
-    margin: 1% auto;
+    margin: 0.75% auto;
+}
+
+#add-task-desc-input {
+    width: 90%;
+    padding: 0.75%;
+    margin: 0.75% 0.25% 0.5%;
+    resize: none;
+    overflow-y: auto;
+    font-size: 1.2em;
+}
+
+#add-task-btn {
+    align-self: center;
+    width: 10%;
 }

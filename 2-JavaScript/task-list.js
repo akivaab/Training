@@ -57,6 +57,7 @@ addTaskBtn.addEventListener("click", () => {
         todoTaskList.appendChild(newTask)
         addEventListenerToCompletedButton(newTask.querySelector(".task-completed-btn"))
         addEventListenerToDeleteButton(newTask.querySelector(".task-delete-btn"))
+        todoBtn.click()
     }
 })
 
