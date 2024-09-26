@@ -51,17 +51,21 @@ main {
     max-height: 65vh; /* Adjust this value as needed to control height */
 }
 
-#task-list {
+#todo-task-list {
     padding: 0;
     margin: 0;
     border: solid lawngreen 1px;
     list-style: none;
 }
 
-.task {
+.todo-task {
     display: flex;
     align-items: center;
     border: solid black 1px;
+}
+
+#completed-task-list {
+    display: none;
 }
 
 .task-drag {
