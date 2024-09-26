@@ -35,10 +35,14 @@ completedTaskList.innerHTML = completedListHTML
 todoBtn.addEventListener("click", () => {
     completedTaskList.style.display = "none"
     todoTaskList.style.display = "block"
+    completedBtn.className = "radio-button-off"
+    todoBtn.className = "radio-button-on"
 })
 completedBtn.addEventListener("click", () => {
     todoTaskList.style.display = "none"
     completedTaskList.style.display = "block"
+    todoBtn.className = "radio-button-off"
+    completedBtn.className = "radio-button-on"
 })
 addTaskBtn.addEventListener("click", () => {
     let taskDesc = addTaskDescInput.value
