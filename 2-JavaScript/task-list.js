@@ -101,3 +101,11 @@ function addEventListenerToCompletedButton(completedBtn) {
         completedTaskList.append(completedTask)
     })
 }
+
+function makeTaskDraggable(task) {
+    let draggedTask = null
+    task.draggable = true
+    task.ondragstart = (event) => {
+        draggedTask = task
+    }
+}
