@@ -75,15 +75,23 @@ function addEventListenerToDeleteButton(deleteBtn) {
 }
 
 function addEventListenerToCompletedButton(completedBtn) {
+    // completedBtn.addEventListener("click", () => {
+    //     let taskDesc = completedBtn.previousElementSibling.textContent
+    //     completedBtn.closest("li").remove()
+    //     let completedTask = document.createElement("li")
+    //     completedTask.classList.add("completed-task")
+    //     completedTask.innerHTML =  `<div class="task-drag">drag</div>
+    //                                 <p class="task-desc">${taskDesc}</p>
+    //                                 <button class="task-delete-btn">delete</button>`
+    //     completedTaskList.appendChild(completedTask)
+    //     addEventListenerToDeleteButton(completedTask.querySelector(".task-delete-btn"))
+    // })
+
     completedBtn.addEventListener("click", () => {
-        let taskDesc = completedBtn.previousElementSibling.textContent
-        completedBtn.closest("li").remove()
-        let completedTask = document.createElement("li")
+        let completedTask = completedBtn.closest("li")
+        completedTask.classList.remove("todo-task")
         completedTask.classList.add("completed-task")
-        completedTask.innerHTML =  `<div class="task-drag">drag</div>
-                                    <p class="task-desc">${taskDesc}</p>
-                                    <button class="task-delete-btn">delete</button>`
-        completedTaskList.appendChild(completedTask)
-        addEventListenerToDeleteButton(completedTask.querySelector(".task-delete-btn"))
+        completedTask.querySelector(".task-completed-btn").remove()
+        completedTaskList.append(completedTask)
     })
 }
