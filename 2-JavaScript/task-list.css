@@ -64,7 +64,7 @@ main {
 
 #task-list-container {
     width: 70%;
-    margin: 0 auto;
+    margin: 0.5% auto;
     padding: 0.25%;
     background-color: darkslategray;
     border: solid black 4px;
@@ -89,6 +89,7 @@ main {
     align-items: center;
     border-radius: 8px;
     margin: 0.2%;
+    cursor: grab;
 }
 .todo-task {
     background-color: lightcyan;
@@ -102,7 +103,7 @@ main {
 
 .task-drag {
     width: 5%;
-    margin: 1%
+    margin: 1%;
 }
 .task-drag img {
     max-width: 100%;

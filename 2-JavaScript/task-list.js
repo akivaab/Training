@@ -63,6 +63,7 @@ addTaskBtn.addEventListener("click", () => {
         todoTaskList.appendChild(newTask)
         addEventListenerToCompletedButton(newTask.querySelector(".task-completed-btn"))
         addEventListenerToDeleteButton(newTask.querySelector(".task-delete-btn"))
+        makeTaskDraggable(newTask)
         todoBtn.click()
     }
 })
@@ -73,6 +74,9 @@ for (const deleteBtn of document.querySelectorAll(".task-delete-btn")) {
 for (const completedBtn of document.querySelectorAll(".task-completed-btn")) {
     addEventListenerToCompletedButton(completedBtn)
 }
+for (const task of document.querySelectorAll("li")) {
+    makeTaskDraggable(task)
+}
 
 function addEventListenerToDeleteButton(deleteBtn) {
     deleteBtn.addEventListener("click", () => {
@@ -81,18 +85,6 @@ function addEventListenerToDeleteButton(deleteBtn) {
 }
 
 function addEventListenerToCompletedButton(completedBtn) {
-    // completedBtn.addEventListener("click", () => {
-    //     let taskDesc = completedBtn.previousElementSibling.textContent
-    //     completedBtn.closest("li").remove()
-    //     let completedTask = document.createElement("li")
-    //     completedTask.classList.add("completed-task")
-    //     completedTask.innerHTML =  `<div class="task-drag">drag</div>
-    //                                 <p class="task-desc">${taskDesc}</p>
-    //                                 <button class="task-delete-btn">delete</button>`
-    //     completedTaskList.appendChild(completedTask)
-    //     addEventListenerToDeleteButton(completedTask.querySelector(".task-delete-btn"))
-    // })
-
     completedBtn.addEventListener("click", () => {
         let completedTask = completedBtn.closest("li")
         completedTask.classList.remove("todo-task")
@@ -102,10 +94,37 @@ function addEventListenerToCompletedButton(completedBtn) {
     })
 }
 
+let draggedTask = null
 function makeTaskDraggable(task) {
-    let draggedTask = null
     task.draggable = true
-    task.ondragstart = (event) => {
+    task.addEventListener("dragstart", (event) => {
+        event.dataTransfer.effectAllowed = 'move'
+        event.dataTransfer.setData('text/plain', null)
         draggedTask = task
-    }
+    })
+    task.addEventListener("dragend", () => {
+        draggedTask = null
+    })
+    task.addEventListener("dragover", (event) => {
+        event.preventDefault()
+        if (isBefore(task, draggedTask)) {
+            task.parentNode.insertBefore(draggedTask, task);
+        } 
+        else {
+            task.parentNode.insertBefore(draggedTask, task.nextSibling);
+        }
+    })
 }
+
+// Check if task1 is before task2 in the list
+function isBefore(task1, task2) {
+    if (task1.parentNode === task2.parentNode) {
+        for (let curTask = task2.previousSibling; curTask; curTask = curTask.previousSibling) {
+            if (curTask === task1) {
+                return true
+            }
+        }
+    }
+    return false;
+}
+  
