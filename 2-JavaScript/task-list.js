@@ -1,14 +1,13 @@
-let todoBtn = document.getElementById("todo-btn")
-let completedBtn = document.getElementById("completed-btn")
-let todoTaskList = document.getElementById("todo-task-list")
-let completedTaskList = document.getElementById("completed-task-list")
-let addTaskBtn = document.getElementById("add-task-btn")
-let addTaskDescInput = document.getElementById("add-task-desc-input")
+const todoBtn = document.getElementById("todo-btn")
+const completedBtn = document.getElementById("completed-btn")
+const todoTaskList = document.getElementById("todo-task-list")
+const completedTaskList = document.getElementById("completed-task-list")
+const addTaskBtn = document.getElementById("add-task-btn")
+const addTaskDescInput = document.getElementById("add-task-desc-input")
 
-let todoTaskDescriptions = localStorage.getItem("todo-task-descriptions") ? JSON.parse(localStorage.getItem("todo-task-descriptions")) : [];
-let completedTaskDescriptions = localStorage.getItem("completed-task-descriptions") ? JSON.parse(localStorage.getItem("completed-task-descriptions")) : [];
-
-// initialize todoTaskList
+// initialize todoTaskList using local storage
+const storedTodoTaskDescriptions = localStorage.getItem("todo-task-descriptions")
+const todoTaskDescriptions = storedTodoTaskDescriptions ? JSON.parse(storedTodoTaskDescriptions) : [];
 let todoListHTML = ""
 for (const todoTaskDesc of todoTaskDescriptions) {
     todoListHTML += `<li class="todo-task">
@@ -19,7 +18,9 @@ for (const todoTaskDesc of todoTaskDescriptions) {
 }
 todoTaskList.innerHTML = todoListHTML
 
-// initialize completeTaskList
+// initialize completeTaskList using local storage
+const storedCompletedTaskDescriptions = localStorage.getItem("completed-task-descriptions")
+const completedTaskDescriptions = storedCompletedTaskDescriptions ? JSON.parse(storedCompletedTaskDescriptions) : [];
 let completedListHTML = ""
 for (const completedTaskDesc of completedTaskDescriptions) {
     completedListHTML +=    `<li class="completed-task">
@@ -29,7 +30,7 @@ for (const completedTaskDesc of completedTaskDescriptions) {
 }
 completedTaskList.innerHTML = completedListHTML
 
-// add event listeners to buttons
+// setup radio buttons to change between the lists
 todoBtn.addEventListener("click", () => {
     completedTaskList.style.display = "none"
     todoTaskList.style.display = "block"
@@ -42,6 +43,8 @@ completedBtn.addEventListener("click", () => {
     todoBtn.className = "radio-button-off"
     completedBtn.className = "radio-button-on"
 })
+
+// setup button to add a new task to todoTaskList
 addTaskBtn.addEventListener("click", () => {
     let taskDesc = addTaskDescInput.value
     if (taskDesc != "") {
@@ -59,22 +62,27 @@ addTaskBtn.addEventListener("click", () => {
     }
 })
 
+// add event listeners to all delete and completed buttons in both lists
 for (const deleteBtn of document.querySelectorAll(".task-delete-btn")) {
     addEventListenerToDeleteButton(deleteBtn)
 }
 for (const completedBtn of document.querySelectorAll(".task-completed-btn")) {
     addEventListenerToCompletedButton(completedBtn)
 }
+
+// make all tasks draggable
 for (const task of document.querySelectorAll("li")) {
     makeTaskDraggable(task)
 }
 
+// enable delete button to remove task
 function addEventListenerToDeleteButton(deleteBtn) {
     deleteBtn.addEventListener("click", () => {
         deleteBtn.closest("li").remove()
     })
 }
 
+// enable complete button to move task from todoTaskList to completedTaskList
 function addEventListenerToCompletedButton(completedBtn) {
     completedBtn.addEventListener("click", () => {
         let completedTask = completedBtn.closest("li")
@@ -85,6 +93,7 @@ function addEventListenerToCompletedButton(completedBtn) {
     })
 }
 
+// setup tasks to be draggable in order to change the order of the lists
 let draggedTask = null
 function makeTaskDraggable(task) {
     task.draggable = true
@@ -107,7 +116,7 @@ function makeTaskDraggable(task) {
     })
 }
 
-// Check if task1 is before task2 in the list
+// check if task1 is before task2 in a list
 function isBefore(task1, task2) {
     if (task1.parentNode === task2.parentNode) {
         for (let curTask = task2.previousSibling; curTask; curTask = curTask.previousSibling) {
@@ -119,6 +128,7 @@ function isBefore(task1, task2) {
     return false;
 }
 
+// save task lists to local storage before user exits webpage
 window.addEventListener("beforeunload", () => {
     let descriptions = Array.from(todoTaskList.querySelectorAll(".task-desc")).map(p => p.textContent)
     localStorage.setItem("todo-task-descriptions", JSON.stringify(descriptions))
