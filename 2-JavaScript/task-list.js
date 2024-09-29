@@ -22,7 +22,7 @@ todoTaskList.innerHTML = todoListHTML
 // initialize completeTaskList
 let completedListHTML = ""
 for (const completedTaskDesc of completedTaskDescriptions) {
-    completedListHTML +=    `<li class="completed-task"></li>
+    completedListHTML +=    `<li class="completed-task">
                                 <p class="task-desc">${completedTaskDesc}</p>
                                 <button class="task-delete-btn">Delete</button>
                             </li>`
@@ -118,4 +118,11 @@ function isBefore(task1, task2) {
     }
     return false;
 }
+
+window.addEventListener("beforeunload", () => {
+    let descriptions = Array.from(todoTaskList.querySelectorAll(".task-desc")).map(p => p.textContent)
+    localStorage.setItem("todo-task-descriptions", JSON.stringify(descriptions))
+    descriptions = Array.from(completedTaskList.querySelectorAll(".task-desc")).map(p => p.textContent)
+    localStorage.setItem("completed-task-descriptions", JSON.stringify(descriptions))
+})
   
