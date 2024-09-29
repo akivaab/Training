@@ -12,9 +12,6 @@ let completedTaskDescriptions = localStorage.getItem("completed-task-description
 let todoListHTML = ""
 for (const todoTaskDesc of todoTaskDescriptions) {
     todoListHTML += `<li class="todo-task">
-                        <div class="task-drag">
-                            <img src="drag.png" alt="drag icon">
-                        </div>
                         <p class="task-desc">${todoTaskDesc}</p>
                         <button class="task-completed-btn">Completed</button>
                         <button class="task-delete-btn">Delete</button>
@@ -26,9 +23,6 @@ todoTaskList.innerHTML = todoListHTML
 let completedListHTML = ""
 for (const completedTaskDesc of completedTaskDescriptions) {
     completedListHTML +=    `<li class="completed-task"></li>
-                                <div class="task-drag">
-                                    <img src="drag.png" alt="drag icon">
-                                </div>
                                 <p class="task-desc">${completedTaskDesc}</p>
                                 <button class="task-delete-btn">Delete</button>
                             </li>`
@@ -54,10 +48,7 @@ addTaskBtn.addEventListener("click", () => {
         addTaskDescInput.value = ""
         let newTask = document.createElement("li")
         newTask.classList.add("todo-task")
-        newTask.innerHTML = `<div class="task-drag">
-                                <img src="drag.png" alt="drag icon">
-                            </div>
-                            <p class="task-desc">${taskDesc}</p>
+        newTask.innerHTML = `<p class="task-desc">${taskDesc}</p>
                             <button class="task-completed-btn">Completed</button>
                             <button class="task-delete-btn">Delete</button>`
         todoTaskList.appendChild(newTask)

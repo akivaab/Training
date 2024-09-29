@@ -88,6 +88,7 @@ main {
     display: flex;
     align-items: center;
     border-radius: 8px;
+    padding: 1%;
     margin: 0.2%;
     cursor: grab;
 }
@@ -101,17 +102,9 @@ main {
     border: solid lightcyan 1px;
 }
 
-.task-drag {
-    width: 5%;
-    margin: 1%;
-}
-.task-drag img {
-    max-width: 100%;
-    object-fit: contain;
-}
 .task-desc {
-    width: 70%;
-    margin-right: 2%;
+    width: 75%;
+    margin: auto 2%;
     word-wrap: break-word;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
