@@ -8,7 +8,6 @@ To get a copy of the repository on your local machine, open your terminal and ru
 
 ```
 git clone https://github.com/akivaab/Training.git
-
 ```
 
 Or, you can download the ZIP file from the GitHub page.
@@ -36,7 +35,12 @@ This will open the `index.html` file in your default browser. From there, you ca
 
 This is a personal portfolio created to demonstrate fluency in **HTML** and **CSS**.
 
+![Screenshots od the first two sections of the portfolio.](images/portfolio-1.jpeg)
+![Screenshots of the last two sections of the portfolio.](images/portfolio-2.jpeg)
+
 ### 2. JavaScript
 
 This is a dynamic list of tasks created to demonstrate fluency in **JavaScript**. New tasks can be added by writing them in the text area at the bottom of the screen. The order of the tasks can also be changed by using the mouse to click on a task and drag it up or down the list.
 Additionally, you can mark tasks as complete and switch between the list of tasks to-do and of tasks completed using the buttons above the list.
+
+![Screenshot of the task list.](images/task-list.jpeg)
