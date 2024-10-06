@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 1%;
+}
+
+h2 {
+    font-size: 1.35em;
+}
+
+a {
+    display: block;
+    background-color: lightgray;
+    color: black;
+    text-decoration: none;
+    padding: 1%;
+    margin: 0.5% 0;
+    border-radius: 5px;
+}
+
+a:hover {
+    background-color: darkgray;
+}
